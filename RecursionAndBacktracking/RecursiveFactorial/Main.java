@@ -1,4 +1,4 @@
-package RecursionAndBacktracking.RecursiveDrawing;
+package RecursionAndBacktracking.RecursiveFactorial;
 
 
 public class Main {
