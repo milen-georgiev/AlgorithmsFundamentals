@@ -1,0 +1,14 @@
+# Permutations without Repetitions
+* Given a set of elements, find all permutations without repetitions.
+``` 
+Examples
+    Input
+    A B C
+    Output
+    A B C
+    A C B
+    B A C
+    B C A
+    C B A
+    C A B
+```
