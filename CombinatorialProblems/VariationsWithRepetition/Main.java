@@ -1,4 +1,4 @@
-package CombinatorialProblems.VariationsWithoutRepetitions;
+package CombinatorialProblems.VariationsWithRepetition;
 
 import java.util.Scanner;
 
@@ -29,12 +29,8 @@ public class Main {
         }
 
         for (int i = 0; i < input.length; i++) {
-            if (!used[i]) {
-                used[i] = true;
-                variations[index] = input[i];
-                variation(index + 1);
-                used[i] = false;
-            }
+            variations[index] = input[i];
+            variation(index + 1);
         }
 
     }
