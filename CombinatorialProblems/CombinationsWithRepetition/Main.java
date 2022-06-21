@@ -6,7 +6,6 @@ public class Main {
 
     public static String[] input;
     public static String[] variations;
-    public static boolean[] used;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

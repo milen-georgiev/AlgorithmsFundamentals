@@ -3,46 +3,27 @@ package CombinatorialProblems.NChooseKCount;
 import java.util.Scanner;
 
 public class Main {
-
-    public static String[] input;
-    public static String[] variations;
-    public static boolean[] used;
-
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-        input = scanner.nextLine().split("\\s+");
 
+        int n = Integer.parseInt(scanner.nextLine());
         int k = Integer.parseInt(scanner.nextLine());
 
-        variations = new String[k];
+        int binom = binom(n, k);
 
-        used = new boolean[input.length];
+        System.out.println(binom);
 
-        variation(0);
     }
 
-    private static void variation(int index) {
-        if (index == variations.length) {
-            print(variations);
-            return;
+    private static int binom(int n, int k) {
+        if (k > n) {
+            return 0;
+        }
+        if (k == 0 || k == n) {
+            return 1;
         }
 
-        for (int i = 0; i < input.length; i++) {
-            variations[index] = input[i];
-            variation(index + 1);
-        }
-
-    }
-
-    private static void swap(String[] input, int first, int second) {
-        String temp = input[first];
-        input[first] = input[second];
-        input[second] = temp;
-    }
-
-    private static void print(String[] input) {
-        System.out.println(String.join(" ", input));
+        return binom(n - 1, k - 1) + binom(n - 1, k);
     }
 
 }
