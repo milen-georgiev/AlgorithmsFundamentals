@@ -5,25 +5,37 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+
+    public static int[] arr;
+    public static int n;
+
     public static void main(String[] arg) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] element = reader.readLine().split("\\s+");
+        n = Integer.parseInt(reader.readLine());
 
-        for (int i = element.length - 1; i >= 0; i--) {
+        arr = new int[n];
 
-        }
-
-        printReversedArray(element, element.length - 1);
+        permute(0);
     }
 
-    private static void printReversedArray(String[] element, int index) {
-
-        if (index < 0) {
-            return;
+    private static void permute(int index) {
+        if (index == arr.length) {
+            printArray();
+        } else {
+            for (int i = 1; i <= n; i++) {
+                arr[index] = i;
+                permute(index + 1);
+            }
         }
-
-        System.out.print(element[index] + " ");
-        printReversedArray(element, index - 1);
     }
+
+    private static void printArray() {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+
 }
