@@ -1,0 +1,37 @@
+# 
+* Write a program that receives the names of girls and boys in a class and generates all possible ways to create teams with 3 girls and 2 boys. Print each team on a separate line separated by a comma and space ", " (first the girls then the boys). For more clarification see the examples below
+  * Note: "Linda, Amy, Katty, John, Bill" is the same as "Linda, Amy, Katty, Bill, John"; so print only the first case
+``` 
+Examples
+    Input
+       • On the first line you will receive the girl‘s names separated by a comma and space ", ".
+       • On the second line you will receive the boy‘s names separated by a comma and space ", ".
+    Output
+       • On separate lines print all the possible teams with exactly 3 girls and 2 boys separated by comma and space and starting with the girls.
+    Constrains
+       • There will always be at least 3 girls and 2 boys in the input.
+       
+       Examples
+       Input
+        - Linda, Amy, Katty
+        - John, Bill
+        Output
+        - Linda, Amy, Katty, John, Bill
+       ----------------------------------
+       Input
+        - Lisa, Yoana, Marta, Rachel
+        - George, Garry, Bob
+        Output
+        - Lisa, Yoana, Marta, George, Garry
+        -Lisa, Yoana, Marta, George, Bob
+        -Lisa, Yoana, Marta, Garry, Bob
+        -Lisa, Yoana, Rachel, George, Garry
+        -Lisa, Yoana, Rachel, George, Bob
+        - Lisa, Yoana, Rachel, Garry, Bob
+        - Lisa, Marta, Rachel, George, Garry
+        -Lisa, Marta, Rachel, George, Bob
+        -Lisa, Marta, Rachel, Garry, Bob
+        -Yoana, Marta, Rachel, George, Garry
+        -Yoana, Marta, Rachel, George, Bob
+        -Yoana, Marta, Rachel, Garry, Bob
+```
