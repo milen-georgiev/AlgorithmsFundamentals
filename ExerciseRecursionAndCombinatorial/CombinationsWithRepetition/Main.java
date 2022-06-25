@@ -1,4 +1,4 @@
-package ExerciseRecursionAndCombinatorial.NestedLoopsToRecursion;
+package ExerciseRecursionAndCombinatorial.CombinationsWithRepetition;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,20 +14,23 @@ public class Main {
 
         n = Integer.parseInt(reader.readLine());
 
-        arr = new int[n];
+        int k = Integer.parseInt(reader.readLine());
 
-        permute(0);
+        arr = new int[k];
+
+        combinations(0, 1);
     }
 
-    private static void permute(int index) {
+    private static void combinations(int index, int start) {
         if (index == arr.length) {
             printArray();
         } else {
-            for (int i = 1; i <= n; i++) {
+            for (int i = start; i <= n; i++) {
                 arr[index] = i;
-                permute(index + 1);
+                combinations(index + 1, i);
             }
         }
+
     }
 
     private static void printArray() {
@@ -37,5 +40,3 @@ public class Main {
         System.out.println();
     }
 }
-
-
