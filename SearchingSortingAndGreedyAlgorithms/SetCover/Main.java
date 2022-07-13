@@ -39,10 +39,10 @@ public class Main {
     public static List<int[]> chooseSets(List<int[]> sets, int[] universe) {
 
         List<int[]> selectedSet = new ArrayList<>();
-        List<Integer> universeSet = Arrays.asList()
-        }
-
-
+        List<Integer> universeSet = Arrays.asList();
         return sets;
     }
+
+
+
 }
