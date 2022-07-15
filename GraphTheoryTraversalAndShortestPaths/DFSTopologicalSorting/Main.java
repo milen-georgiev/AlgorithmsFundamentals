@@ -1,4 +1,4 @@
-package GraphTheoryTraversalAndShortestPaths.ConnectedComponents;
+package GraphTheoryTraversalAndShortestPaths.DFSTopologicalSorting;
 
 import java.util.*;
 import java.util.stream.Collectors;
