@@ -34,9 +34,26 @@ public class Main {
         visited = new boolean[n + 1];
         prevNodes = new int[n + 1];
 
+        Arrays.fill(prevNodes, -1);
+
         bfs(graph, source, destination);
 
+        List<Integer> path = new ArrayList<>();
 
+        path.add(destination);
+
+        int prevNode = prevNodes[destination];
+
+        while (prevNode != -1) {
+            path.add(prevNode);
+            prevNode = prevNodes[prevNode];
+        }
+
+        System.out.println("Shortest path length is: " + (path.size() - 1));
+
+        for (int i = path.size() - 1; i >= 0 ; i--) {
+            System.out.print(path.get(i) + " ");
+        }
     }
 
     private static void bfs(List<List<Integer>> graph, int source, int destination) {
@@ -62,92 +79,4 @@ public class Main {
         }
     }
 
-    public static List<Deque<Integer>> getConnectedComponents(List<List<Integer>> graph) {
-        boolean[] visited = new boolean[graph.size()];
-        List<Deque<Integer>> components = new ArrayList<>();
-
-        for (int start = 0; start < graph.size(); start++) {
-            if (!visited[start]) {
-                components.add(new ArrayDeque<>());
-                bfs(start, components, graph, visited);
-            }
-        }
-
-
-        return components;
-    }
-
-    private static void bfs(int start, List<Deque<Integer>> components, List<List<Integer>> graph, boolean[] visited) {
-        Deque<Integer> queue = new ArrayDeque<>();
-        visited[start] = true;
-        queue.offer(start);
-
-        while (!queue.isEmpty()) {
-            int node = queue.poll();
-
-            components.get(components.size() - 1).offer(node);
-
-            for (int child : graph.get(node)) {
-                if (!visited[child]) {
-                    visited[child] = true;
-                    queue.offer(child);
-                }
-            }
-        }
-    }
-
-    private static void dfs(int node, List<Deque<Integer>> components, List<List<Integer>> graph, boolean[] visited) {
-
-        if (!visited[node]) {
-            visited[node] = true;
-            for (int child : graph.get(node)) {
-                dfs(child, components, graph, visited);
-            }
-            components.get(components.size() - 1).offer(node);
-        }
-    }
-
-    public static Collection<String> topSort(Map<String, List<String>> graph) {
-        Map<String, Integer> dependenciesCount = getDependenciesCound(graph);
-
-        List<String> sorted = new ArrayList<>();
-
-        while (!graph.isEmpty()) {
-            String key = graph.keySet()
-                    .stream()
-                    .filter(k -> dependenciesCount.get(k) == 0)
-                    .findFirst()
-                    .orElse(null);
-            if (key == null){
-                break;
-            }
-
-            for (String child : graph.get(key)) {
-                dependenciesCount.put(child,dependenciesCount.get(child) -1);
-            }
-
-            sorted.add(key);
-            graph.remove(key);
-        }
-
-        if (!graph.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-
-        return sorted;
-    }
-
-    private static Map<String, Integer> getDependenciesCound(Map<String, List<String>> graph) {
-        Map<String, Integer> dependenciesCount = new LinkedHashMap<>();
-
-        for (Map.Entry<String, List<String>> node : graph.entrySet()) {
-            dependenciesCount.putIfAbsent(node.getKey(), 0);
-            for (String child : node.getValue()) {
-                dependenciesCount.putIfAbsent(child, 0);
-                dependenciesCount.put(child, dependenciesCount.get(child) + 1);
-            }
-        }
-
-        return dependenciesCount;
-    }
 }
